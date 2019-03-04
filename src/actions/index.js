@@ -15,5 +15,3 @@ export const fetchCityList = () => async dispatch => {
 	
 	dispatch({ type: 'FETCH_CITY', payload: response.data })
 };
-
-

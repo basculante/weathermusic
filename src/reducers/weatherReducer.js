@@ -5,6 +5,7 @@ const INITIAL_STATE = {
 	tempFarenheit: null,
 	condition: null,
 	conditionIcon: null,
+	conditionId: null,
 	city: null,
 	success: null,
 }
@@ -17,6 +18,7 @@ export default (state = INITIAL_STATE, action) => {
 				tempCelsius: Math.floor(action.payload.main.temp - 273.15),
 				tempFarenheit: Math.floor((9 / 5) * (action.payload.main.temp - 273) + 32),
 				condition: action.payload.weather[0].main,
+				conditionId: action.payload.weather[0].id,
 				conditionIcon: action.payload.weather[0].icon,
 				city: action.payload.name,
 				success: true

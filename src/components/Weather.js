@@ -4,6 +4,22 @@ import { fetchWeather } from '../actions';
 import WeatherForm from './WeatherForm';
 
 class Weather extends React.Component {
+	state = {
+		metric: false
+	}
+
+	changeToMetric = () => {
+		this.setState(() => ({
+			metric: true
+		}));
+	}
+
+	changeToFarenheit = () => {
+		this.setState(() => ({
+			metric: false
+		}))
+	}
+
 	render () {
 		if (this.props.weather.success === null) {
 			return (
@@ -20,24 +36,43 @@ class Weather extends React.Component {
 					<WeatherForm />
 				</div>
 			);
-		}
-		return (
-			<div className="ui centered grid">
-			<h1 className="row" style={{ marginTop: '20px' }}>Weather Music</h1>
-				<div>
-					<div className="ui segment" style={{margin: '50px'}}>
-						<p>{this.props.weather.tempCelsius}C</p>
-						<p>{this.props.weather.tempFarenheit}F</p>
-						<p><img src={`http://openweathermap.org/img/w/${this.props.weather.conditionIcon}.png`} alt="conditon-Icon" style={{ height:'100px', width:'100px'}}/></p>
-						<p>{this.props.weather.condition}</p>
-						<p>{this.props.weather.city}</p>
-					</div>
-					<div className="row">
-						<WeatherForm />
+		} else if (this.props.weather.success === true && this.state.metric === false) {
+			return (
+				<div className="ui centered grid">
+				<h1 className="row" style={{ marginTop: '20px' }}>Weather Music</h1>
+					<div>
+						<div className="ui" style={{margin: '50px'}}>
+							<p>{this.props.weather.tempFarenheit}F</p>
+							<p><img src={`http://openweathermap.org/img/w/${this.props.weather.conditionIcon}.png`} alt="conditon-Icon" style={{ height:'100px', width:'100px'}}/></p>
+							<p>{this.props.weather.condition}</p>
+							<p>{this.props.weather.city}</p>
+							<button onClick={this.changeToMetric} className="ui green button">Celcius</button>
+						</div>
+						<div className="row">
+							<WeatherForm />
+						</div>
 					</div>
 				</div>
-			</div>
-		);
+			);
+		} else if (this.props.weather.success === true && this.state.metric === true ) {
+			return (
+				<div className="ui centered grid">
+				<h1 className="row" style={{ marginTop: '20px' }}>Weather Music</h1>
+					<div>
+						<div className="ui" style={{margin: '50px'}}>
+							<p>{this.props.weather.tempCelsius}C</p>
+							<p><img src={`http://openweathermap.org/img/w/${this.props.weather.conditionIcon}.png`} alt="conditon-Icon" style={{ height:'100px', width:'100px'}}/></p>
+							<p>{this.props.weather.condition}</p>
+							<p>{this.props.weather.city}</p>
+							<button onClick={this.changeToFarenheit} className="ui green button">Farenheit</button>
+						</div>
+						<div className="row">
+							<WeatherForm />
+						</div>
+					</div>
+				</div>
+			);
+		}
 	}
 };
 

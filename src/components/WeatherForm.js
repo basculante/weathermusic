@@ -36,7 +36,7 @@ class WeatherForm extends React.Component {
 			<form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
 				<Field name="city" component={this.renderInput} label="Enter City" />
 				<Field name="country" component={this.renderInput} label="Enter Country" />
-				<button className="ui button primary">Submit</button>
+				<button className="ui button primary" style={{ marginBottom: '30px' }}>Submit</button>
 			</form>
 		);
 	}
