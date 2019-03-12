@@ -39,17 +39,15 @@ class Weather extends React.Component {
 		} else if (this.props.weather.success === false) {
 			alert("Could not find city.")
 			return (
-				<div className="weather-display">
+				<div>
 					<div className="video-container">
 		          		<video id="background-video-intro" loop autoPlay muted>
 		            		<source src={require('./backgrounds/intro-page.mp4')} type="video/mp4"/>
 		          		</video>
 			    	</div>
-				<Grid>
-					<Grid.Row>
-						<WeatherForm />
-					</Grid.Row>
-				</Grid>
+						<div className="intro-weatherform">
+							<WeatherForm />
+						</div>
 				</div>
 			);
 		} else if (this.props.weather.success === true && this.state.metric === false) {
