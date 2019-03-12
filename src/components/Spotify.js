@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Grid } from 'semantic-ui-react';
+import './Weather.css';
 
 class Spotify extends React.Component {
 	render () {
@@ -10,9 +12,18 @@ class Spotify extends React.Component {
 		 || conditionIcon === '11n') {
 			return (
 				<div className="rain">
-					<div className="ui centered grid">
-						<iframe title="rain" src="https://open.spotify.com/embed/playlist/2NyQKPgxZROmEkKfBpZOFM" width="600" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media" style={{ margin: '30px'}}></iframe>
-					</div>
+					<div className="video-container">
+			          <video id="background-video-rain" loop autoPlay muted>
+			            <source src={require('./backgrounds/rain.mp4')} type="video/mp4"/>
+			          </video>
+				    </div>
+					<Grid columns={1}>
+						<Grid.Column>
+						<div className="spotify-container">
+						<iframe className="spotify-iframe" title="rain" src="https://open.spotify.com/embed/playlist/2NyQKPgxZROmEkKfBpZOFM" width="560" height="315" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+						</div>
+						</Grid.Column>
+					</Grid>
 				</div>
 			);
 		} 	
@@ -20,8 +31,19 @@ class Spotify extends React.Component {
 	else if ( conditionIcon === '01d' || conditionIcon === '01n' || conditionIcon === '02d' || conditionIcon === '02n' || conditionIcon === '03d' || conditionIcon === '03n') {
 			return (
 				<div className="sunny">
-					<div className="ui centered grid">
-						<iframe title="sunny" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWX1UA045EoPG" width="600" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media" style={{ margin: '30px'}}></iframe>
+					<div>
+						<div className="video-container">
+				          <video id="background-video-sunny" loop autoPlay muted>
+				            <source src={require('./backgrounds/sunny.mp4')} type="video/mp4"/>
+				          </video>
+					    </div>
+						<Grid>
+						<Grid.Column>
+						<div className="spotify-container">
+							<iframe className="spotify-iframe" title="sunny" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWX1UA045EoPG" width="560" height="315" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+						</div>
+						</Grid.Column>
+						</Grid>
 					</div>
 				</div>
 			);
@@ -30,9 +52,18 @@ class Spotify extends React.Component {
 	else if ( conditionIcon === '13d' || conditionIcon === '13n') {
 			return (
 				<div className="snow">
-					<div className="ui centered grid">
-						<iframe title="snow" src="https://open.spotify.com/embed/playlist/2HgNCwQ0nZIMgyqnFGyhFu" width="600" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media" style={{ margin: '30px'}}></iframe>
+					<Grid>
+						<div className="video-container">
+				          <video id="background-video-snow" loop autoPlay muted>
+				            <source src={require('./backgrounds/snow.mp4')} type="video/mp4"/>
+				          </video>
+					    </div>
+					<Grid.Column>
+					<div className="spotify-container">
+						<iframe className="spotify-iframe" title="snow" src="https://open.spotify.com/embed/playlist/5lAO7e3ZkEb3MKo3ZgZy6F" width="560" height="315" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 					</div>
+					</Grid.Column>
+					</Grid>
 				</div>
 			);
 		}
@@ -40,20 +71,27 @@ class Spotify extends React.Component {
 	else if ( conditionIcon === '50d' || conditionIcon === '50n' || conditionIcon === '04d' || conditionIcon ==='04n' ) {
 			return (
 				<div className="cloudy">
-					<div className="ui centered grid">
-						<iframe title="cloudy" src="https://open.spotify.com/embed/playlist/6ch64c7EaRQPcQ1rgO5w9H" width="600" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media" style={{ margin: '30px'}}></iframe>
+					<div>
+						<div>
+							<div className="video-container">
+					          <video id="background-video-cloudy" loop autoPlay muted>
+					            <source src={require('./backgrounds/cloudy.mp4')} type="video/mp4"/>
+					          </video>
+						    </div>
+							<Grid>
+							<Grid.Column>
+							<div className="spotify-container">
+								<iframe className="spotify-iframe" title="cloudy" src="https://open.spotify.com/embed/playlist/6ch64c7EaRQPcQ1rgO5w9H" width="560" height="315" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+							</div>
+							</Grid.Column>
+							</Grid>
+						</div>
 					</div>
 				</div>
 			);
 		}
-
-	return (
-				<div className="cloudy">
-					<div className="ui centered grid">
-						<iframe title="cloudy" src="https://open.spotify.com/embed/playlist/6ch64c7EaRQPcQ1rgO5w9H" width="600" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media" style={{ margin: '30px'}}></iframe>
-					</div>
-				</div>
-			);
+	
+	return null;
 	}
 }
 

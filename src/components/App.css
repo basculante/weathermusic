@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Rajdhani');
+
+.page {
+	font-family: 'Rajdhani', sans-serif;
+	color: white;
+/*	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;*/
+	padding: 10vh
+}
+
+.weather-column {
+	display: block;
+	align-items: center;
+	justify-content: center;
+}

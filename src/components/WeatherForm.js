@@ -2,16 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { fetchWeather } from '../actions';
+import { Form, Message, Button } from 'semantic-ui-react';
+import './Weather.css';
 
 class WeatherForm extends React.Component {
 	renderError({ error, touched }) {
 		if (touched && error) {
 			return (
-				<div className="ui error message">
-					<div>
-						{error}
-					</div>
-				</div>
+				<Message 
+					error
+					content={error}
+				/>
 			);
 		}
 	};
@@ -20,8 +21,8 @@ class WeatherForm extends React.Component {
 		const className = `field ${meta.error && meta.touched ? 'error' : ''}`
 		return (
 			<div className={className}>
-				<label>{label}</label>
-				<input { ...input} autoComplete="off" />
+				<label style={{color: 'white'}}>{label}</label>
+				<Form.Input { ...input} autoComplete="off" />
 				{this.renderError(meta)}
 			</div>
 		);
@@ -33,11 +34,13 @@ class WeatherForm extends React.Component {
 
 	render () {
 		return (
-			<form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
-				<Field name="city" component={this.renderInput} label="Enter City" />
-				<Field name="country" component={this.renderInput} label="Enter Country" />
-				<button className="ui button primary" style={{ marginBottom: '30px' }}>Submit</button>
-			</form>
+			<div className="form">
+				<Form onSubmit={this.props.handleSubmit(this.onSubmit)} error>
+					<Field name="city" component={this.renderInput} label="Enter City" className="weather-form"/>
+					<Field name="country" component={this.renderInput} label="Enter Country" />
+					<Button className="button" style={{marginTop:'2vh', marginBottom: '2vh'}}>Submit</Button>
+				</Form>
+			</div>
 		);
 	}
 };
