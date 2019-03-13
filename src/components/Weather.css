@@ -43,6 +43,24 @@ h1 {
 	z-index: -9;
 }
 
+#background-video-cold {
+	position: fixed;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	min-height: 100%;
+	z-index: -9;
+}
+
+#background-video-spring {
+	position: fixed;
+	top: 0;
+	left: 0;
+	min-width: 100%;
+	min-height: 100%;
+	z-index: -9;
+}
+
 #background-video-intro {
 	position: fixed;
 	top: 0;
